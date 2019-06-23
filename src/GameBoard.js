@@ -43,28 +43,19 @@ class GameBoard extends Component {
 
   reset = () => {
     clearInterval(timer);
-    
+    timeElapsed = 0;
     this.setState({
     board: this.setup(),
     currPair: [],
     stopClick: false,
     moves: 0,
+    timeEl: 0,
+    isFirst: true,
    });
   }
 
-  handleClick = (counter, e) => {
-    if (this.state.stopClick) {
-      return;
-    }
-    
-    // // determine if it's the first click, then start the timer
-    // let isFirst = this.state.board.every(i => {
-    //   let isShown = i.props.isShow;
-    //   return isShown === false;
-    // })
-    if (this.state.isFirst) {
-      // start the timer
-      let that = this;
+  startTimer = () => {
+    let that = this;
       timer = setInterval(function () {
         timeElapsed+=1;
         let min = Math.trunc(timeElapsed / 60);
@@ -80,6 +71,21 @@ class GameBoard extends Component {
           timeEl: processedTime,
         })
       }, 1000);
+  }
+
+  handleClick = (counter, e) => {
+    if (this.state.stopClick) {
+      return;
+    }
+    
+    // // determine if it's the first click, then start the timer
+    // let isFirst = this.state.board.every(i => {
+    //   let isShown = i.props.isShow;
+    //   return isShown === false;
+    // })
+    if (this.state.isFirst) {
+      // start the timer
+      this.startTimer();
       this.setState({
         isFirst: false,
       })
@@ -228,11 +234,8 @@ class GameBoard extends Component {
             <div className="items">
               <button className="reset-button" onClick={() => this.reset()}> New Game </button>
             </div>
-            
           </div>
-          
         </div>
-        
         <div className="board-container">
           <Container>
             <Row>
@@ -247,7 +250,6 @@ class GameBoard extends Component {
             <Row>
               {row4}
             </Row>
-
           </Container>
         </div>
       </div>
@@ -255,7 +257,6 @@ class GameBoard extends Component {
     )
   }
 }
-
 
 export default GameBoard;
 

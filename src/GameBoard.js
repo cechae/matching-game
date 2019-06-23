@@ -1,17 +1,22 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
 import Card from './Card';
 import './GameBoard.css';
 import { Container, Row, Col } from 'reactstrap';
+
+let timeElapsed = 0; 
+let timer;
 
 class GameBoard extends Component {
   
   constructor(props) {
     super(props);
     this.state = {
-      hasWon: false,
       board: this.setup(),
       currPair: [],
       stopClick: false,
+      moves: 0,
+      timeEl: 0,
+      isFirst: true,
     }
   }
 
@@ -35,21 +40,51 @@ class GameBoard extends Component {
     return resultCards;
   }
 
-  // TODO : FIX RESET!!
+
   reset = () => {
-   this.setState({
-    hasWon: false,
+    clearInterval(timer);
+    
+    this.setState({
     board: this.setup(),
     currPair: [],
     stopClick: false,
-
+    moves: 0,
    });
   }
-  handleClick(counter, e) {
+
+  handleClick = (counter, e) => {
     if (this.state.stopClick) {
       return;
     }
     
+    // // determine if it's the first click, then start the timer
+    // let isFirst = this.state.board.every(i => {
+    //   let isShown = i.props.isShow;
+    //   return isShown === false;
+    // })
+    if (this.state.isFirst) {
+      // start the timer
+      let that = this;
+      timer = setInterval(function () {
+        timeElapsed+=1;
+        let min = Math.trunc(timeElapsed / 60);
+        let sec = timeElapsed % 60;
+        // console.log("minutes: " ,min);
+        // console.log("seconds: ", timeElapsed%60);
+        min = (min < 10) ? ("0" + min) : min;
+        sec = (sec < 10) ? ("0" + sec) : sec;
+
+        let processedTime = `${min}:${sec}`;
+
+        that.setState({
+          timeEl: processedTime,
+        })
+      }, 1000);
+      this.setState({
+        isFirst: false,
+      })
+    } 
+
     let currList = this.state.currPair;
 
     // If nothing in the currList yet,
@@ -79,6 +114,13 @@ class GameBoard extends Component {
       let existingCard = this.state.currPair[0];
       let thisCard = this.state.board[counter];
       let copy = [...this.state.board];
+
+      //Increment the move counter
+      this.setState(
+        (prevState,props)=>{
+            return {moves:prevState.moves+1};
+         }
+     );
 
       // If matching
       if (existingCard.props.iconName===thisCard.props.iconName) {
@@ -140,9 +182,9 @@ class GameBoard extends Component {
           },  1000);
 
         }
-    }
+      }
+    
   }
-
 
   render () {
     // determine whether user has won
@@ -150,6 +192,10 @@ class GameBoard extends Component {
       let isShown = i.props.isShow;
       return isShown === true;
     });
+    // is user has won, stop the timer
+    if (isWon) { 
+      clearInterval(timer);
+    }
 
     let row1=[];
     let row2=[];
@@ -171,8 +217,20 @@ class GameBoard extends Component {
       <div className="container">
         <div className="top-container">
           <h1> Matching Game </h1>
-          {isWon===true ? (<h1>You won!</h1>): (<h4> In progress</h4>)}
-          <button onClick={() => this.reset()}> Reset </button>
+          {isWon===true ? (<h1>You won!</h1>): ('')}
+          <div className="buttons-container">
+            <div className="items">
+              <p className="move-counter"> {this.state.moves} moves </p>
+            </div>
+            <div className="items">
+              <p> Elapsed Time: {this.state.timeEl} </p>
+            </div>
+            <div className="items">
+              <button className="reset-button" onClick={() => this.reset()}> New Game </button>
+            </div>
+            
+          </div>
+          
         </div>
         
         <div className="board-container">

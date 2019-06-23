@@ -7,6 +7,7 @@ class Card extends Component {
   if (!this.props.isShow) {
     toShow = (
       <button id="rectangle" className="rectangle" onClick={this.props.clickHandler}>
+        
       </button>
     );
   } else {

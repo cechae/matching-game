@@ -55,7 +55,7 @@ html {
     justify-content: space-evenly;
     padding-top: 50px;
     padding-bottom: 50px;
-    padding: 0 5%;
+    padding: 0 10%;
     box-shadow: 7px 7px 2px 1px rgba(36, 13, 13, 0.2);
     border-radius: 10px;
 }
@@ -82,8 +82,8 @@ html {
       max-width: 800px;
     }
     #column {
-        padding-left: 5%;
-        padding-right: 5%;
+        padding-left: 2%;
+        padding-right: 2%;
       }
   }
   @media (max-width: 991px), (min-width: 768px) {

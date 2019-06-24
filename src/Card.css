@@ -14,15 +14,35 @@
 #icon {
   font-size: 3rem;
 }
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
   .container {
     max-width: 800px;
+  }
+  .col-3 {
+    padding-left: 4%;
+    padding-right: 3%;
+  }
+  .rectangle{
+    height: 140px;
+  }
+
+}
+@media (min-width: 992px),(min-width: 1199px) {
+  .container {
+    max-width: 800px;
+  }
+  .rectangle{
+    height: 90px;
   }
 
 }
 @media (max-width: 991px), (min-width: 768px) {
   .rectangle{
-    height: 100px;
+    height: 85px;
+  }
+  .col-3 {
+    padding-left: 5px;
+    padding-right: 5px;
   }
 }
 @media (max-width: 767px) {
@@ -30,8 +50,8 @@
     height: 90px;
   }
   .col-3 {
-    padding-left: 5px !important;
-    padding-right: 5px !important;
+    padding-left: 5px;
+    padding-right: 5px;
   }
 }
 @media (max-width: 430px) {
@@ -40,5 +60,10 @@
   }
   #icon {
     font-size: 2rem;
+  }
+}
+@media (max-width: 360px) {
+  .rectangle {
+    height: 60px;
   }
 }

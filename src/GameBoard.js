@@ -209,13 +209,13 @@ class GameBoard extends Component {
     let row4=[];
     for (let i = 0; i<16; i++) {
       if (i<4){
-        row1.push(<Col xs="3"> {this.state.board[i]} </Col>);
+        row1.push(<Col id="column" xs="3"> {this.state.board[i]} </Col>);
       } else if (i>=4 && i<8) {
-        row2.push(<Col xs="3"> {this.state.board[i]} </Col>);
+        row2.push(<Col id="column" xs="3"> {this.state.board[i]} </Col>);
       } else if (i>=8 && i<12) {
-        row3.push(<Col xs="3"> {this.state.board[i]} </Col>);
+        row3.push(<Col id="column" xs="3"> {this.state.board[i]} </Col>);
       } else {
-        row4.push(<Col xs="3"> {this.state.board[i]} </Col>);
+        row4.push(<Col id="column" xs="3"> {this.state.board[i]} </Col>);
       }
     }
     

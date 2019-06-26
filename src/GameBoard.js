@@ -28,6 +28,7 @@ class GameBoard extends Component {
       let rand = Math.floor(Math.random() * iconList.length);
       resultCards.push(
         <Card 
+          id={counter}
           key={counter} 
           isShow={false} 
           iconName={iconList[rand]} 
@@ -207,16 +208,18 @@ class GameBoard extends Component {
     let row2=[];
     let row3=[];
     let row4=[];
+    let counter=0;
     for (let i = 0; i<16; i++) {
       if (i<4){
-        row1.push(<Col id="column" xs="3"> {this.state.board[i]} </Col>);
+        row1.push(<Col key={counter} id="column" xs="3"> {this.state.board[i]} </Col>);
       } else if (i>=4 && i<8) {
-        row2.push(<Col id="column" xs="3"> {this.state.board[i]} </Col>);
+        row2.push(<Col key={counter} id="column" xs="3"> {this.state.board[i]} </Col>);
       } else if (i>=8 && i<12) {
-        row3.push(<Col id="column" xs="3"> {this.state.board[i]} </Col>);
+        row3.push(<Col key={counter} id="column" xs="3"> {this.state.board[i]} </Col>);
       } else {
-        row4.push(<Col id="column" xs="3"> {this.state.board[i]} </Col>);
+        row4.push(<Col key={counter} id="column" xs="3"> {this.state.board[i]} </Col>);
       }
+      counter++;
     }
     
     return (

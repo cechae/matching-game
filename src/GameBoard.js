@@ -264,7 +264,7 @@ class GameBoard extends Component {
 export default GameBoard;
 
 GameBoard.defaultProps = {
-  doubleIcons: ['fas fa-map-marker-alt', 'far fa-paper-plane', 'fas fa-dog', 'fas fa-headphones',
-  'fas fa-mug-hot', 'fas fa-cookie', 'fas fa-globe-asia', 'fas fa-coins', 'fas fa-map-marker-alt', 'far fa-paper-plane', 'fas fa-dog', 'fas fa-headphones',
-  'fas fa-mug-hot', 'fas fa-cookie', 'fas fa-globe-asia', 'fas fa-coins'],
+  doubleIcons: ['fas fa-map-marker-alt', 'far fa-paper-plane', 'fas fa-dog', 'fas fa-carrot',
+  'fas fa-mug-hot', 'fas fa-gingerbread-man', 'fas fa-globe-asia', 'fas fa-coins', 'fas fa-map-marker-alt', 'far fa-paper-plane', 'fas fa-dog', 'fas fa-carrot',
+  'fas fa-mug-hot', 'fas fa-gingerbread-man', 'fas fa-globe-asia', 'fas fa-coins'],
 }

@@ -9,28 +9,28 @@ class Card extends Component {
     switch (this.props.iconName) {
       case "airplane":
         // code to be executed when the expression matches value1
-        iconToDisplay = <Airplane />;
+        iconToDisplay = <Airplane size={56} />;
         break;
       case "balloon":
-        iconToDisplay = <BalloonHeart/>
+        iconToDisplay = <BalloonHeart size={56} />
         break;
       case "bell":
-        iconToDisplay = <Bell/>
+        iconToDisplay = <Bell size={56} />
         break;
       case "moon":
-        iconToDisplay = <Moon/>
+        iconToDisplay = <Moon size={56} />
         break;
       case "plug":
-        iconToDisplay = <Plug/>
+        iconToDisplay = <Plug size={56} />
         break;
       case "telephone":
-        iconToDisplay = <Telephone/>
+        iconToDisplay = <Telephone size={56} />
         break;
       case "hourglass":
-        iconToDisplay = <Hourglass/>
+        iconToDisplay = <Hourglass size={56} />
         break;
       case "bag":
-        iconToDisplay = <Bag/>
+        iconToDisplay = <Bag size={56} />
         break;
       default:
     }

@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import Card from './Card';
 import './GameBoard.css';
 import { Container, Row, Col } from 'reactstrap';
-
 let timeElapsed = 0; 
 let timer;
 
@@ -41,7 +40,6 @@ class GameBoard extends Component {
     return resultCards;
   }
 
-
   reset = () => {
     clearInterval(timer);
     timeElapsed = 0;
@@ -61,8 +59,6 @@ class GameBoard extends Component {
         timeElapsed+=1;
         let min = Math.trunc(timeElapsed / 60);
         let sec = timeElapsed % 60;
-        // console.log("minutes: " ,min);
-        // console.log("seconds: ", timeElapsed%60);
         min = (min < 10) ? ("0" + min) : min;
         sec = (sec < 10) ? ("0" + sec) : sec;
 
@@ -78,12 +74,6 @@ class GameBoard extends Component {
     if (this.state.stopClick) {
       return;
     }
-    
-    // // determine if it's the first click, then start the timer
-    // let isFirst = this.state.board.every(i => {
-    //   let isShown = i.props.isShow;
-    //   return isShown === false;
-    // })
     if (this.state.isFirst) {
       // start the timer
       this.startTimer();
@@ -99,7 +89,6 @@ class GameBoard extends Component {
       let newList = [];
       // get the clicked card
       let oldCard = this.state.board[counter];
-
       let currCard = <Card 
         key={counter} 
         isShow={true} 
@@ -118,6 +107,7 @@ class GameBoard extends Component {
 
     } else if (currList.length===1) {
       // compare the iconName of the existing card in currPair and the current card
+      console.log("reached here... ")
       let existingCard = this.state.currPair[0];
       let thisCard = this.state.board[counter];
       let copy = [...this.state.board];
@@ -187,10 +177,8 @@ class GameBoard extends Component {
               stopClick: false,
             })
           },  1000);
-
         }
       }
-    
   }
 
   render () {
@@ -256,15 +244,14 @@ class GameBoard extends Component {
           </Container>
         </div>
       </div>
-
     )
   }
 }
 
 export default GameBoard;
-
 GameBoard.defaultProps = {
-  doubleIcons: ['fas fa-map-marker-alt', 'far fa-paper-plane', 'fas fa-dog', 'fas fa-carrot',
-  'fas fa-mug-hot', 'fas fa-gingerbread-man', 'fas fa-globe-asia', 'fas fa-coins', 'fas fa-map-marker-alt', 'far fa-paper-plane', 'fas fa-dog', 'fas fa-carrot',
-  'fas fa-mug-hot', 'fas fa-gingerbread-man', 'fas fa-globe-asia', 'fas fa-coins'],
+  doubleIcons:["airplane","balloon","bell","moon","plug",
+  "telephone","airplane","bag","hourglass","balloon",
+  "bell","moon","plug","telephone","hourglass","bag"
+]
 }
